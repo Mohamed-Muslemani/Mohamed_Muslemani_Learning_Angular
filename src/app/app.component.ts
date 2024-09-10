@@ -9,5 +9,7 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'MohamedMuslemaniLearningAngular';
+  title = 'Mohamed Muslemani Learning Angular';
+  courseCode: string = "MAD 307";
+  section: number = 4;
 }
