@@ -3,5 +3,5 @@ export interface Champions {
     title: string;
     class: string;
     price: number;
-    isRanged: boolean  
+    isOP: boolean  
 }
