@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Champions } from '../Shared/Modules/champions';
 
 @Component({
   selector: 'app-champion-details',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './champion-details.component.css'
 })
 export class ChampionDetailsComponent {
-
+  @Input() champion?: Champions;
 }
