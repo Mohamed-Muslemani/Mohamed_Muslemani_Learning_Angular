@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Champions } from '../Shared/Modules/champions';
-import {JsonPipe, NgForOf, NgIf} from "@angular/common";
+import {NgForOf} from "@angular/common";
 import { ChampionDetailsComponent } from "../champion-details/champion-details.component";
 
 @Component({
