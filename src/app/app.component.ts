@@ -11,5 +11,5 @@ import { ChampionListComponent } from "./champion-list/champion-list.component";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Champion Generation';
+  title = 'Champion List';
 }

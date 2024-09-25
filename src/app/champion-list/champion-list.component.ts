@@ -6,7 +6,7 @@ import { ChampionDetailsComponent } from "../champion-details/champion-details.c
 @Component({
   selector: 'app-champion-list',
   standalone: true,
-  imports: [ChampionDetailsComponent],
+  imports: [ChampionDetailsComponent, NgForOf],
   templateUrl: './champion-list.component.html',
   styleUrl: './champion-list.component.css'
 })
