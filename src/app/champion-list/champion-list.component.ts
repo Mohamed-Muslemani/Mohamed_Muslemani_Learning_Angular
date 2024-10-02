@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Champions } from '../Shared/Modules/champions';
 import {NgForOf} from "@angular/common";
 import { ChampionDetailsComponent } from "../champion-details/champion-details.component";
@@ -11,9 +11,19 @@ import {ChampionService} from "../Services/champion.service";
   templateUrl: './champion-list.component.html',
   styleUrl: './champion-list.component.css'
 })
-export class ChampionListComponent {
+export class ChampionListComponent implements OnInit{
+  championList: Champions[] = []
   constructor(private championService: ChampionService) {
   }
+
+  ngOnInit() {
+    this.championService.getChampions().subscribe({
+      next: (data: Champions[]) => this.championList = data,
+      error: err => console.error("Error fetching Champions", err),
+      complete:() => console.log("Champion data fetch complete!")
+    })
+  }
+
   toggleOPStatus(champion: Champions): void {
     champion.isOP = !champion.isOP;
   }
