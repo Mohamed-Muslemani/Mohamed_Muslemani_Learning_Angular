@@ -1,5 +1,9 @@
 <div class="container">
-    <app-champion-details *ngFor="let champions of championList; even as isEven" [champion]="champions" [backgroundColor]="isEven ? 'rgb(10, 20, 40)' : 'rgb(10, 50, 60)'"></app-champion-details>
+    <app-champion-details *ngFor="let champions of championList; even as isEven"
+                          [champion]="champions"
+                          [backgroundColor]="isEven ? 'rgb(10, 20, 40)' : 'rgb(10, 50, 60)'"
+                          (click)="selectChampion(champions)">
+    </app-champion-details>
 </div>
 
 

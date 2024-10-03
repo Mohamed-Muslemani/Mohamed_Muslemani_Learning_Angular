@@ -15,15 +15,22 @@ import {Champions} from "./Shared/Modules/champions";
 })
 export class AppComponent implements OnInit{
   title = 'Champion List';
-  champion?: Champions;
+  selectedChampion: Champions | undefined;
   constructor(private championService: ChampionService) {
   }
   ngOnInit() {
     this.championService.getChampionsById(1).subscribe({
-      next: (data: Champions | undefined) => this.champion = data,
+      next: (data: Champions | undefined) => this.selectedChampion = data,
       error: err => console.error("Error fetching Champion", err),
       complete:() => console.log("Champion data fetch complete!")
     })
   }
 
+  onChampionSelected(champion: Champions) {
+    this.championService.getChampionsById(champion.id).subscribe({
+      next: (data: Champions | undefined) => this.selectedChampion = data,
+      error: err => console.error("Error fetching Champion", err),
+      complete:() => console.log("Champion data fetch complete!")
+    })
+  }
 }
