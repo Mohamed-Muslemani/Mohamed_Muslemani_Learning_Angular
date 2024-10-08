@@ -4,5 +4,6 @@ export interface Champions {
     title: string;
     class: string;
     price: number;
-    isOP: boolean
+    isOP: boolean;
+    src: string;
 }
