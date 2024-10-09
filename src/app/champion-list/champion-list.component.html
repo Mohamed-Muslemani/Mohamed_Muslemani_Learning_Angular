@@ -1,9 +1,29 @@
 <div class="container">
-    <app-champion-details *ngFor="let champions of championList; even as isEven"
-                          [champion]="champions"
-                          [backgroundColor]="isEven ? 'rgb(10, 20, 40)' : 'rgb(10, 50, 60)'"
-                          (click)="selectChampion(champions)">
-    </app-champion-details>
+  <h2>Champion List</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Champion</th>
+      <th>Title</th>
+      <th>Class</th>
+      <th>Price</th>
+      <th>Overpowered</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let champions of championList; even as isEven"
+        [routerLink]="['/champions',champions.id ]"
+        [ngStyle]="{'background-color': isEven ? 'rgb(10, 20, 40)' : 'rgb(10, 50, 60)'}">
+      <td>{{ champions.id }}</td>
+      <td>{{ champions.name }}</td>
+      <td>{{ champions.title }}</td>
+      <td>{{ champions.class }}</td>
+      <td>{{ champions.price }}</td>
+      <td>{{ champions.isOP ? 'Yes' : 'No' }}</td>
+    </tr>
+    </tbody>
+  </table>
 </div>
 
 

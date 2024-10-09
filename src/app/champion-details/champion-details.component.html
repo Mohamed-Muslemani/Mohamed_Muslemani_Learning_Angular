@@ -1,6 +1,14 @@
-<div class="champion-card" [ngStyle]="{'background-color': backgroundColor}">
-    <h2>{{champion?.name}}</h2>
-    <h3>{{champion?.title}}</h3>
-    <img ngSrc="{{champion?.src}}" width="400" height="400" alt="Champion Images">
-    <!-- Images from https://www.leagueoflegends.com/en-us/champions/ -->
+<div class="champion-card">
+  <h2>{{champion?.name}}</h2>
+  <h3>{{champion?.title}}</h3>
+  <p>Class: {{champion?.class}}</p>
+  <p>Price: {{champion?.price}}</p>
+  <p>Overpowered: {{ champion?.isOP ? 'Yes' : 'No' }}</p>
+
+  <img ngSrc="{{champion?.src}}" width="400" height="400" alt="Champion Images">
+  <!-- Images from https://www.leagueoflegends.com/en-us/champions/ -->
+
+  <button (click)="goBackward()" [disabled]="currentIndex === 0">Previous</button>
+  <button (click)="goForward()" [disabled]="currentIndex === championList.length - 1">Next</button>
+  <button (click)="goBack()">Back to Champion List</button>
 </div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Champions} from "../Shared/Modules/champions";
-import {championList} from "../Shared/mockChampion.data";
+import {championList} from "../Shared/data/mockChampion.data";
 import {Observable, of} from "rxjs";
 
 @Injectable({

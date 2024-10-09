@@ -1,15 +1,53 @@
-import { Component, Input } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Champions } from '../Shared/Modules/champions';
 import {NgOptimizedImage, NgStyle} from '@angular/common';
+import {ActivatedRoute, Router} from "@angular/router";
+import {ChampionService} from "../Services/champion.service";
 
 @Component({
   selector: 'app-champion-details',
   standalone: true,
   imports: [NgStyle, NgOptimizedImage],
   templateUrl: './champion-details.component.html',
-  styleUrl: './champion-details.component.css'
+  styleUrl: './champion-details.component.scss'
 })
-export class ChampionDetailsComponent {
-  @Input() champion?: Champions;
-  @Input() backgroundColor?: String;
+export class ChampionDetailsComponent implements OnInit{
+  champion: Champions | undefined;
+  championList: Champions[] = [];
+  currentIndex: number = 0;
+
+  constructor(
+    private route: ActivatedRoute,
+    private championService: ChampionService,
+    private router: Router
+  ) {}
+  ngOnInit(): void {
+    this.championService.getChampions().subscribe(champs => {
+      this.championList = champs;
+
+      this.route.paramMap.subscribe(params => {
+        const id = Number(params.get('id'));
+        if (id) {
+          this.currentIndex = this.championList.findIndex(champ => champ.id === id);
+          this.champion = this.championList[this.currentIndex];
+        }
+      });
+    });
+  }
+
+  goBack(): void {
+    this.router.navigate(['/champions']);
+  }
+  goForward(): void {
+    if (this.currentIndex < this.championList.length - 1) {
+      this.currentIndex++;
+      this.router.navigate(['/champions', this.championList[this.currentIndex].id]);
+    }
+  }
+  goBackward(): void {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+      this.router.navigate(['/champions', this.championList[this.currentIndex].id]);
+    }
+  }
 }

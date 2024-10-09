@@ -1,18 +1,19 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Champions } from '../Shared/Modules/champions';
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgStyle} from "@angular/common";
 import { ChampionDetailsComponent } from "../champion-details/champion-details.component";
 import {ChampionService} from "../Services/champion.service";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-champion-list',
   standalone: true,
-  imports: [ChampionDetailsComponent, NgForOf],
+  imports: [ChampionDetailsComponent, NgForOf, RouterLink, NgStyle],
   templateUrl: './champion-list.component.html',
-  styleUrl: './champion-list.component.css'
+  styleUrl: './champion-list.component.scss'
 })
 export class ChampionListComponent implements OnInit{
-  @Output() championSelected = new EventEmitter<Champions>();
+
 
   championList: Champions[] = []
   constructor(private championService: ChampionService) {
@@ -26,11 +27,4 @@ export class ChampionListComponent implements OnInit{
     })
   }
 
-  toggleOPStatus(champion: Champions): void {
-    champion.isOP = !champion.isOP;
-  }
-
-  selectChampion(champions: Champions) {
-    this.championSelected.emit(champions);
-  }
 }

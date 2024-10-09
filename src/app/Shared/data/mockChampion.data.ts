@@ -1,4 +1,4 @@
-import {Champions} from "./Modules/champions";
+import {Champions} from "../Modules/champions";
 
 export const championList: Champions[] = [
   {id: 1, name: "Aatrox", title: "the Darkin Blade", class: " Juggernaut", price: 4800, isOP: true, src: 'images/Aatrox.webp'},

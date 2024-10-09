@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './modify-list-item.component.html',
-  styleUrl: './modify-list-item.component.css'
+  styleUrl: './modify-list-item.component.scss'
 })
 export class ModifyListItemComponent {
 

@@ -1,9 +1,17 @@
-<nav class="nav-bar">
-  <a routerLink="/champions" routerLinkActive="active">Champion List</a>
-  <a routerLink="/modify-champion" routerLinkActive="active">Modify List</a>
-</nav>
-<h1>{{ title }}</h1>
-<router-outlet></router-outlet>
+<body>
+  <header>
+    <h1>{{ title }}</h1>
+    <nav class="nav-bar">
+      <a routerLink="/champions" routerLinkActive="active">Champion List</a>
+      <a routerLink="/modify-champion" routerLinkActive="active">Modify List</a>
+    </nav>
+  </header>
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</body>
+
 
 
 
