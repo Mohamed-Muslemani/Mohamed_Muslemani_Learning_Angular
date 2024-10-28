@@ -12,29 +12,32 @@ export class ChampionService {
   constructor() { }
 
   getChampions(): Observable<Champions[]>{
-    return of(championList);
+    return of(this.champions);
   }
 
   getChampionsById(championId: number): Observable<Champions | undefined> {
-    const champion = this.champions.find(champ => champ.id === championId);
-    return of(champion);
+    return of(this.champions.find(champ => champ.id === championId));
   }
 
-  addChampion(newChampion:Champions) : Observable<Champions[]>{
-    this.champions.push(newChampion)
-    return of(this.champions);
+  addChampion(newChampion:Champions) : Observable<Champions>{
+    this.champions.push(newChampion);
+    return of(newChampion);
   }
 
-  updateChampion(updatedChampion: Champions): Observable<Champions[]> {
+  updateChampion(updatedChampion: Champions): Observable<Champions | undefined> {
     const index = this.champions.findIndex(champ => champ.id === updatedChampion.id);
-    if (index !== -1) {
+    if (index > -1) {
       this.champions[index] = updatedChampion;
+      return of(updatedChampion);
     }
-    return of(this.champions);
+    return of(undefined);
   }
 
-  deleteChampion(championId: number): Observable<Champions[]> {
+  deleteChampion(championId: number): void {
     this.champions = this.champions.filter(champ => champ.id !== championId);
-    return of(this.champions);
+  }
+
+  generateNewId(): number {
+    return this.champions.length > 0 ? Math.max(...this.champions.map(champ => champ.id)) + 1 : 1;
   }
 }
