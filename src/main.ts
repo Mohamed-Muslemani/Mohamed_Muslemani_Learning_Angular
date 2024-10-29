@@ -11,6 +11,7 @@ const routes: Routes = [
   {path: 'champions', component: ChampionListComponent},
   {path: 'champions/:id', component: ChampionDetailsComponent},
   {path: 'modify-champion', component: ModifyListItemComponent},
+  {path: 'modify-champion/:id', component: ModifyListItemComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

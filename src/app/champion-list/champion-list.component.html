@@ -22,7 +22,7 @@
       <td>{{ champions.price }}</td>
       <td>{{ champions.isOP ? 'Yes' : 'No' }}</td>
       <!-- Edit Button -->
-      <button type="button" (click)="$event.stopPropagation()" [routerLink]="['/modify-champion']">Edit</button>
+      <button type="button" (click)="$event.stopPropagation()" [routerLink]="['/modify-champion', champions.id]">Edit</button>
       <!-- Delete Button-->
       <button type="button" (click)="onDelete(champions.id); $event.stopPropagation()">Delete</button>
     </tr>
