@@ -1,1 +1,49 @@
-<p>modify-list-item works!</p>
+<form [formGroup]="championForm" (ngSubmit)="onSubmit()">
+  <!-- ID Field -->
+  <div class="form-group">
+    <label for="id">ID</label>
+    <input type="number" id="id" formControlName="id" />
+  </div>
+
+  <!-- Name Field -->
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" id="name" formControlName="name" />
+  </div>
+
+  <!-- Title Field -->
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" id="title" formControlName="title" />
+  </div>
+
+  <!-- Class Field -->
+  <div class="form-group">
+    <label for="class">Class</label>
+    <input type="text" id="class" formControlName="class" />
+  </div>
+
+  <!-- Price Field -->
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input type="number" id="price" formControlName="price" />
+  </div>
+
+  <!-- Is Admin Checkbox -->
+  <div class="form-group">
+    <label for="isOP">Is OP</label>
+    <input type="checkbox" id="isOP" formControlName="isOP" />
+  </div>
+
+  <!-- Src Field -->
+  <div class="form-group">
+    <label for="src">Src</label>
+    <input type="text" id="src" formControlName="src" />
+  </div>
+
+  <!-- Submit Button (Add or Update) -->
+  <button type="submit">Submit</button>
+
+  <!-- Back Button -->
+  <button type="button" (click)="navigateToChampionList()">Back to List</button>
+</form>
