@@ -7,7 +7,7 @@ import {PageNotFoundComponent} from "./app/page-not-found/page-not-found.compone
 import {ChampionDetailsComponent} from "./app/champion-details/champion-details.component";
 
 const routes: Routes = [
-  {path:'', redirectTo: '/champions', pathMatch: 'full'},
+  {path:'', redirectTo: '/champion', pathMatch: 'full'},
   {path: 'champions', component: ChampionListComponent},
   {path: 'champions/:id', component: ChampionDetailsComponent},
   {path: 'modify-champion', component: ModifyListItemComponent},

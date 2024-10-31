@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Champions } from '../Shared/Modules/champions';
 import {NgOptimizedImage, NgStyle} from '@angular/common';
 import {ActivatedRoute, Router} from "@angular/router";
@@ -12,7 +12,7 @@ import {ChampionService} from "../Services/champion.service";
   styleUrl: './champion-details.component.scss'
 })
 export class ChampionDetailsComponent implements OnInit{
-  champion: Champions | undefined;
+  @Input() champion: Champions | undefined;
   championList: Champions[] = [];
   currentIndex: number = 0;
 
@@ -33,21 +33,5 @@ export class ChampionDetailsComponent implements OnInit{
         }
       });
     });
-  }
-
-  goBack(): void {
-    this.router.navigate(['/champions']);
-  }
-  goForward(): void {
-    if (this.currentIndex < this.championList.length - 1) {
-      this.currentIndex++;
-      this.router.navigate(['/champions', this.championList[this.currentIndex].id]);
-    }
-  }
-  goBackward(): void {
-    if (this.currentIndex > 0) {
-      this.currentIndex--;
-      this.router.navigate(['/champions', this.championList[this.currentIndex].id]);
-    }
   }
 }

@@ -26,7 +26,7 @@ export class ModifyListItemComponent implements OnInit{
     private router: Router
   ) {
     this.championForm = this.fb.group({
-      id: ['', Validators.compose([Validators.required, Validators.min(0)])],
+      id: ['', Validators.min(0)],
       name: ['', Validators.required],
       title: ['', Validators.required],
       class: ['', Validators.pattern(/^[A-Z, a-z]*$/)],
