@@ -42,7 +42,7 @@
   </div>
 
   <!-- Submit Button (Add or Update) -->
-  <button type="submit">Submit</button>
+  <button type="submit" [disabled]="!championForm.valid">Submit</button>
 
   <!-- Back Button -->
   <button type="button" (click)="navigateToChampionList()">Back to List</button>
