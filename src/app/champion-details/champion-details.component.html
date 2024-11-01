@@ -1,4 +1,5 @@
 <div class="champion-card">
+  <ng-content></ng-content>
   <h2>{{champion?.name}}</h2>
   <h3>{{champion?.title}}</h3>
   <p>Class: {{champion?.class}}</p>
@@ -7,5 +8,4 @@
 
   <img ngSrc="{{champion?.src}}" width="400" height="400" alt="Champion Images">
   <!-- Images from https://www.leagueoflegends.com/en-us/champions/ -->
-
 </div>

@@ -1,13 +1,13 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { Champions } from '../Shared/Modules/champions';
 import {NgOptimizedImage, NgStyle} from '@angular/common';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, RouterLink} from "@angular/router";
 import {ChampionService} from "../Services/champion.service";
 
 @Component({
   selector: 'app-champion-details',
   standalone: true,
-  imports: [NgStyle, NgOptimizedImage],
+  imports: [NgStyle, NgOptimizedImage, RouterLink],
   templateUrl: './champion-details.component.html',
   styleUrl: './champion-details.component.scss'
 })
@@ -19,7 +19,6 @@ export class ChampionDetailsComponent implements OnInit{
   constructor(
     private route: ActivatedRoute,
     private championService: ChampionService,
-    private router: Router
   ) {}
   ngOnInit(): void {
     this.championService.getChampions().subscribe(champs => {

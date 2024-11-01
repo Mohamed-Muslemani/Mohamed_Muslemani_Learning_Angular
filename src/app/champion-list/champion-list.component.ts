@@ -27,14 +27,14 @@ export class ChampionListComponent implements OnInit{
     })
   }
 
-  onDelete(id: number): void {
+  onDelete(id: number | undefined): void {
     if (id) {
       this.championService.deleteChampion(id);
     }
-    this.ngOnInit();
+    this.ngOnInit()
   }
 
-  // onEdit() {
-  //   this.router.navigate(['/modify-champion']);
-  // }
+  onEdit(id: number | undefined): void {
+    this.router.navigate(['/modify-champion', id]);
+  }
 }
