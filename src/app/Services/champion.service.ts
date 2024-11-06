@@ -2,39 +2,37 @@ import { Injectable } from '@angular/core';
 import {Champions} from "../Shared/Modules/champions";
 import {championList} from "../Shared/data/mockChampion.data";
 import {Observable, of} from "rxjs";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChampionService {
+  private apiUrl = 'api/champions'
   private champions: Champions[] = championList
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getChampions(): Observable<Champions[]>{
-    return of(this.champions);
+    return this.http.get<Champions[]>(this.apiUrl);
   }
 
-  getChampionsById(championId: number): Observable<Champions | undefined> {
-    return of(this.champions.find(champ => champ.id === championId));
+  getChampionsById(championId: number): Observable<Champions> {
+    return this.http.get<Champions>(`${this.apiUrl}/${championId}`);
   }
 
   addChampion(newChampion:Champions) : Observable<Champions>{
-    this.champions.push(newChampion);
-    return of(newChampion);
+    return this.http.post<Champions>(this.apiUrl, newChampion);
   }
 
-  updateChampion(updatedChampion: Champions): Observable<Champions | undefined> {
-    const index = this.champions.findIndex(champ => champ.id === updatedChampion.id);
-    if (index > -1) {
-      this.champions[index] = updatedChampion;
-      return of(updatedChampion);
-    }
-    return of(undefined);
+  updateChampion(updatedChampion: Champions): Observable<Champions> {
+    const url = `${this.apiUrl}/${updatedChampion.id}`;
+    return this.http.put<Champions>(url, updatedChampion);
   }
 
-  deleteChampion(championId: number): void {
-    this.champions = this.champions.filter(champ => champ.id !== championId);
+  deleteChampion(championId: number): Observable<{}> {
+    const url = `${this.apiUrl}/${championId}`;
+    return this.http.delete(url);
   }
 
   generateNewId(): number {
