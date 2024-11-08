@@ -9,3 +9,5 @@
   <img ngSrc="{{champion?.src}}" width="400" height="400" alt="Champion Images">
   <!-- Images from https://www.leagueoflegends.com/en-us/champions/ -->
 </div>
+<div *ngIf="error" class="error">{{ error }}</div>
+

@@ -19,6 +19,7 @@ import {Champions} from "../Shared/Modules/champions";
 export class ModifyListItemComponent implements OnInit{
   championForm: FormGroup;
   champion: Champions | undefined;
+  error: string | null = null;
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -29,35 +30,39 @@ export class ModifyListItemComponent implements OnInit{
       id: ['', Validators.min(0)],
       name: ['', Validators.required],
       title: ['', Validators.required],
-      class: ['', Validators.pattern(/^[A-Z, a-z]*$/)],
-      price: ['', Validators.max(7300)],
+      class: ['Fighter', Validators.pattern(/^[A-Z, a-z]*$/)],
+      price: [4800, Validators.max(7300)],
       isOP: [false],
-      src: ['']
+      src: ['images/Jayce.webp']
     });
   }
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = Number(this.route.snapshot.paramMap.get('id'));
     if (id) {
-      this.championService.getChampionsById(+id).subscribe(champ => {
-        if(champ) {
-          this.champion = champ;
-          this.championForm.patchValue(champ);
+      this.championService.getChampionsById(id).subscribe( {
+        next: champ => {
+          if(champ) {
+            this.championForm.patchValue(champ);
+          }
+        },
+        error: err => {
+          this.error = 'Error fetching champions';
+          console.error('Error fetching champion:', err);
         }
       });
     }
   }
   onSubmit(): void {
-    const champion: Champions = this.championForm.value;
-
-    if(champion.id) {
-      this.championService.updateChampion(champion);
-    } else {
-      champion.id = this.championService.generateNewId();
-      this.championService.addChampion(champion);
+    if (this.championForm.valid) {
+      const champion: Champions = this.championForm.value;
+      if(champion.id) {
+        this.championService.updateChampion(champion).subscribe(() =>
+        this.router.navigate(['/champions']));
+      } else {
+        this.championService.addChampion(champion).subscribe(() => this.router.navigate(['/champions']));
+      }
     }
-    this.router.navigate(['/champions']);
   }
-
   navigateToChampionList(): void {
     this.router.navigate(['/champions']);
   }

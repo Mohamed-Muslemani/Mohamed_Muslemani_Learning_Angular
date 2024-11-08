@@ -8,5 +8,7 @@
     <button type="button" (click)="onDelete(champions.id); $event.stopPropagation()">Delete</button>
   </app-champion-details>
 </div>
+<div *ngIf="error" class="error">{{ error }}</div>
+
 
 
