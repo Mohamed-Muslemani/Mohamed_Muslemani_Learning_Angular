@@ -1,8 +1,7 @@
 <div class="champion-card">
   <ng-content></ng-content>
-  <h2>{{champion?.name | uppercase}}</h2>
-  <h3>{{champion?.title | titlecase}}</h3>
-  <p>Class: {{champion?.class}}</p>
+  <h2>{{champion | titleName | titlecase}}</h2>
+  <p>Class: {{champion?.class | uppercase}}</p>
   <p>Price: {{champion?.price}}</p>
   <p>Overpowered: {{ (champion?.isOP ? 'Yes' : 'No') | lowercase}}</p>
 

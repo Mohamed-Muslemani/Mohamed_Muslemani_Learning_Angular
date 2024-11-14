@@ -3,11 +3,12 @@ import { Champions } from '../Shared/Modules/champions';
 import {LowerCasePipe, NgIf, NgOptimizedImage, NgStyle, TitleCasePipe, UpperCasePipe} from '@angular/common';
 import {ActivatedRoute, RouterLink} from "@angular/router";
 import {ChampionService} from "../Services/champion.service";
+import {TitleNamePipe} from "../pipes/title-name.pipe";
 
 @Component({
   selector: 'app-champion-details',
   standalone: true,
-  imports: [NgStyle, NgOptimizedImage, RouterLink, NgIf, UpperCasePipe, TitleCasePipe, LowerCasePipe],
+  imports: [NgStyle, NgOptimizedImage, RouterLink, NgIf, UpperCasePipe, TitleCasePipe, LowerCasePipe, TitleNamePipe],
   templateUrl: './champion-details.component.html',
   styleUrl: './champion-details.component.scss'
 })
