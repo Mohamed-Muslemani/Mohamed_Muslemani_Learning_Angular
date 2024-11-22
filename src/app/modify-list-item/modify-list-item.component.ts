@@ -4,6 +4,7 @@ import {NgIf} from "@angular/common";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ChampionService} from "../Services/champion.service";
 import {Champions} from "../Shared/Modules/champions";
+import {HighlightOnFocusDirective} from "../directives/highlight-on-focus.directive";
 
 @Component({
   selector: 'app-modify-list-item',
@@ -11,7 +12,8 @@ import {Champions} from "../Shared/Modules/champions";
   imports: [
     FormsModule,
     NgIf,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HighlightOnFocusDirective
   ],
   templateUrl: './modify-list-item.component.html',
   styleUrl: './modify-list-item.component.scss'
