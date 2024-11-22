@@ -3,9 +3,9 @@
                         [champion]="champions"
                         [routerLink]="['/champions',champions.id ]"
                         [ngStyle]="{'background-color': isEven ? 'rgb(10, 20, 40)' : 'rgb(10, 50, 60)'}">
-    <button type="button" (click)="onEdit(champions.id); $event.stopPropagation()">Edit</button>
+    <button type="button" (click)="onEdit(champions.id); $event.stopPropagation()" [appHoverHighlight]="'grey'">Edit</button>
     <!-- Delete Button-->
-    <button type="button" (click)="onDelete(champions.id); $event.stopPropagation()">Delete</button>
+    <button type="button" (click)="onDelete(champions.id); $event.stopPropagation()" [appHoverHighlight]="'gray'">Delete</button>
   </app-champion-details>
 </div>
 <div *ngIf="error" class="error">{{ error }}</div>

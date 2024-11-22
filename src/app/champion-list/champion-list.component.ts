@@ -4,10 +4,11 @@ import {NgForOf, NgIf, NgStyle} from "@angular/common";
 import { ChampionDetailsComponent } from "../champion-details/champion-details.component";
 import {ChampionService} from "../Services/champion.service";
 import {Router, RouterLink} from "@angular/router";
+import {HoverHighlightDirective} from "../directives/hover-highlight.directive";
 @Component({
   selector: 'app-champion-list',
   standalone: true,
-  imports: [ChampionDetailsComponent, NgForOf, RouterLink, NgStyle, NgIf],
+  imports: [ChampionDetailsComponent, NgForOf, RouterLink, NgStyle, NgIf, HoverHighlightDirective],
   templateUrl: './champion-list.component.html',
   styleUrl: './champion-list.component.scss'
 })
